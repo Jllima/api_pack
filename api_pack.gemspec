@@ -1,5 +1,5 @@
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'api_pack/version'
 
@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jorge']
   spec.email         = ['jlimajorge@gmail.com']
 
-  spec.summary       = 'Api requirements pack for api rails development'
+  spec.summary       = 'Api requirements'
   spec.description   = 'Api requirements pack for api rails development'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/Jllima/api_pack'
   spec.license       = 'MIT'
 
   raise 'RubyGems 2.4 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
