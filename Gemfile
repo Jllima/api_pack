@@ -13,7 +13,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'brakeman', require: false
   gem 'bundler-audit'
   gem 'fasterer'
   gem 'overcommit'
