@@ -6,9 +6,7 @@ require 'simplecov'
 
 Dir[File.expand_path("../support/*.rb", __FILE__)].each { |f| require f }
 
-SimpleCov.start do
-  add_dir 'Libraries', 'api_pack'
-end
+SimpleCov.start
 
 RSpec.configure do |config|
   include ErrorHelper
