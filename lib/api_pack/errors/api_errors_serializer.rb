@@ -1,37 +1,39 @@
-module Errors
-  class ApiErrorsSerializer
-    def initialize(body)
-      @body = body
-    end
+module ApiPack
+  module Errors
+    class ApiErrorsSerializer
+      def initialize(body)
+        @body = body
+      end
 
-    def serializer
-      serializable
-    end
+      def serializer
+        serializable
+      end
 
-    private
+      private
 
-    attr_accessor :body
+      attr_accessor :body
 
-    def serializable
-      return serializable_array if body[:details].is_a?(Array)
+      def serializable
+        return serializable_array if body[:details].is_a?(Array)
 
-      serializable_object
-    end
+        serializable_object
+      end
 
-    def serializable_object
-      {
-        errors: [
-          body
-        ]
-      }
-    end
+      def serializable_object
+        {
+          errors: [
+            body
+          ]
+        }
+      end
 
-    def serializable_array
-      {
-        title: body[:title],
-        status: body[:status],
-        errors: body[:details]
-      }
+      def serializable_array
+        {
+          title: body[:title],
+          status: body[:status],
+          errors: body[:details]
+        }
+      end
     end
   end
 end

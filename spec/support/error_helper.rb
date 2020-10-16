@@ -6,7 +6,7 @@ module ErrorHelper
           {
             title: 'Invalid Credentials',
             status: :unauthorized,
-            details: 'Errors::Auth::AuthenticationError'
+            details: 'ApiPack::Errors::Auth::AuthenticationError'
           }
         ]
       },
@@ -21,7 +21,7 @@ module ErrorHelper
           {
             title: 'Invalid Token',
             status: :unprocessable_entity,
-            details: 'Errors::Auth::InvalidToken'
+            details: 'ApiPack::Errors::Auth::InvalidToken'
           }
         ]
       },
@@ -36,7 +36,7 @@ module ErrorHelper
           {
             title: 'Missing Token',
             status: :unprocessable_entity,
-            details: 'Errors::Auth::MissingToken'
+            details: 'ApiPack::Errors::Auth::MissingToken'
           }
         ]
       },
