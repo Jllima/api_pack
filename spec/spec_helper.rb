@@ -1,12 +1,17 @@
 require 'bundler/setup'
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/vendor/'
+end
+
 require 'api_pack'
 require 'faker'
 require 'pry'
-require 'simplecov'
 
 Dir[File.expand_path("../support/*.rb", __FILE__)].each { |f| require f }
 
-SimpleCov.start
 
 RSpec.configure do |config|
   include ErrorHelper
