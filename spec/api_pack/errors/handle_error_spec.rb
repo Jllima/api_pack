@@ -25,5 +25,14 @@ RSpec.describe ApiPack::Errors::HandleError do
       
       it { expect(@result).to match(hash_including(body_missing_token_error)) }
     end
+    
+    context 'Error Internal Server Error - status and details' do
+      before do
+        subject =  described_class.new(StandardError.new)
+        @result = subject.call
+      end
+      
+      it { expect(@result).to match(hash_including(body_internal_server_error)) }
+    end
   end
 end

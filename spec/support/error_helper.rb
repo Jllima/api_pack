@@ -43,4 +43,19 @@ module ErrorHelper
       status: :unprocessable_entity
     }
   end
+
+  def body_internal_server_error
+    {
+      body: {
+        errors: [
+          {
+            title: 'Internal Server Error',
+            status: :internal_server_error,
+            details: 'StandardError'
+          }
+        ]
+      },
+      status: :internal_server_error
+    }
+  end
 end

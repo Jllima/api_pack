@@ -22,7 +22,7 @@ module ApiPack
         else
           body = {
             title: 'Internal Server Error',
-            detail: error.message,
+            details: error.message,
             status: :internal_server_error
           }
         end
