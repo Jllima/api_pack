@@ -14,7 +14,7 @@ end
 
 group :development, :test do
   gem 'bundler-audit'
-  gem 'coveralls', require: false
+  gem 'coveralls_reborn', '~> 0.18.0', require: false
   gem 'fasterer'
   gem 'overcommit'
   gem 'pry'
