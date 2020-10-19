@@ -6,15 +6,23 @@ require 'api_pack/errors/auth'
 require 'api_pack/errors/error_map'
 require 'api_pack/errors/handle_error'
 require 'api_pack/errors/api_errors_serializer'
+require 'api_pack/constants'
+require 'api_pack/support/api_helper'
 
 module ApiPack
   module_function
 
   PER_PAGE = 10
+  # 24 hours from now
+  DEFAULT_EXP = (Time.now + 1 * 86_400).to_i
 
-  attr_writer :default_per_page
+  attr_writer :default_per_page, :exp
 
   def default_per_page
     @default_per_page ||= PER_PAGE
+  end
+
+  def exp
+    @exp ||= DEFAULT_EXP
   end
 end
