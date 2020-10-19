@@ -1,4 +1,5 @@
 require 'jwt'
+require 'fast_jsonapi'
 require 'api_pack/version'
 require 'api_pack/json_web_token'
 require 'api_pack/pagination_meta_generator'
@@ -8,6 +9,7 @@ require 'api_pack/errors/handle_error'
 require 'api_pack/errors/api_errors_serializer'
 require 'api_pack/constants'
 require 'api_pack/support/api_helper'
+require 'api_pack/serializer/parser'
 
 module ApiPack
   module_function
