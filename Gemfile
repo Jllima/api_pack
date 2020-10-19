@@ -6,12 +6,12 @@ gemspec
 
 gem 'fast_jsonapi'
 gem 'jwt'
+gem 'simplecov', require: false
 
 group :test do
   gem 'coveralls', require: false
   gem 'faker'
   gem 'rspec', '~> 3.7'
-  gem 'simplecov', require: false
 end
 
 group :development, :test do
