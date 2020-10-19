@@ -27,4 +27,8 @@ module ApiPack
   def exp
     @exp ||= DEFAULT_EXP
   end
+
+  def serializer_adapter=(adapter)
+    ApiPack::Serializer::Parser.adapter = adapter
+  end
 end
