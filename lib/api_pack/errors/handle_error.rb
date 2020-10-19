@@ -31,7 +31,7 @@ module ApiPack
       end
 
       def serialize(body)
-        Errors::ApiErrorsSerializer.new(body).serializer
+        ApiPack::Errors::ApiErrorsSerializer.new(body).serializer
       end
 
       def error_message_body(handler:, error:)
@@ -55,7 +55,7 @@ module ApiPack
         {
           title: handler[:title],
           status: handler[:status],
-          details: Errors::ValidationErrorsSerializer.new(error.record).serialize
+          details: ApiPack::Errors::ValidationErrorsSerializer.new(error.record).serialize
         }
       end
     end
