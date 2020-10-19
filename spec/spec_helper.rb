@@ -1,5 +1,8 @@
 require 'bundler/setup'
+
 require 'coveralls'
+Coveralls.wear!
+
 require 'simplecov'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::HTMLFormatter,
@@ -8,7 +11,6 @@ SimpleCov.start do
   add_filter '/spec/'
   add_filter '/vendor/'
 end
-Coveralls.wear!
 
 require 'api_pack'
 require 'faker'

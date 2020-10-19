@@ -41,7 +41,7 @@ RSpec.describe ApiPack::PaginationMetaGenerator do
       let(:page) { Faker::Number.number(digits: 2) }
   
       before do
-        @per_page = Faker::Number.number(digits: 1)
+        @per_page = Faker::Number.number(digits: 2)
         allow(mock_request).to receive(:params).and_return({ page: page, per_page: @per_page })
       end
   
