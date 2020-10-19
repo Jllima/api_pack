@@ -8,8 +8,9 @@ gem 'fast_jsonapi'
 gem 'jwt'
 gem 'simplecov', require: false
 
+gem 'coveralls', require: false
+
 group :test do
-  gem 'coveralls', require: false
   gem 'faker'
   gem 'rspec', '~> 3.7'
 end
