@@ -6,9 +6,6 @@ gemspec
 
 gem 'fast_jsonapi'
 gem 'jwt'
-gem 'simplecov', require: false
-
-gem 'coveralls', require: false
 
 group :test do
   gem 'faker'
@@ -17,9 +14,11 @@ end
 
 group :development, :test do
   gem 'bundler-audit'
+  gem 'coveralls', require: false
   gem 'fasterer'
   gem 'overcommit'
   gem 'pry'
   gem 'rubocop', require: false
   gem 'rubycritic', require: false
+  gem 'simplecov', require: false
 end
