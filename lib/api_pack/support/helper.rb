@@ -1,5 +1,5 @@
 module Support
-  module ApiHelper
+  module Helper
     def to_query_api(params)
       query = params.collect do |key, value|
         "#{key}=#{value}"

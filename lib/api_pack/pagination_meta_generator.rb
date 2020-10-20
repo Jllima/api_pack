@@ -1,8 +1,8 @@
-require 'api_pack/support/api_helper'
+require 'api_pack/support/helper'
 
 module ApiPack
   class PaginationMetaGenerator
-    include Support::ApiHelper
+    include Support::Helper
 
     def initialize(request:, total_pages:)
       @url = "#{request.base_url}#{request.path}"
