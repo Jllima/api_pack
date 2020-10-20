@@ -8,6 +8,9 @@ module ApiPack
           name_klass = klass.to_s.split('_').collect(&:capitalize).join
 
           serializer = "#{name_klass}Serializer"
+
+          require "./app/serializers/fast_jsonapi/#{klass}_serializer"
+
           FastJsonapi.const_get(serializer).new(resource, opt).serializable_hash
         end
       end

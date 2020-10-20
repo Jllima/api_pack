@@ -15,7 +15,7 @@ module ApiPack
       end
 
       def adapter=(adapter)
-        require "./lib/api_pack/serializer/adapter/#{adapter}"
+        require_relative "./adapter/#{adapter}"
 
         adapter_name = adapter.to_s.split('_').collect(&:capitalize).join
 

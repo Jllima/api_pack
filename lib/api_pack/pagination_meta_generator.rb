@@ -1,4 +1,4 @@
-require './lib/api_pack/support/api_helper'
+require 'api_pack/support/api_helper'
 
 module ApiPack
   class PaginationMetaGenerator
