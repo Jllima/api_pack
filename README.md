@@ -196,6 +196,11 @@ def index
 end
 ```
 
+## This example project uses gem api_apck
+
+https://github.com/Jllima/api_pack_rails
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/api_pack.
