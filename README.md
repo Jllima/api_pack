@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/api_pack.svg)](https://badge.fury.io/rb/api_pack)
 [![Build Status](https://travis-ci.org/Jllima/api_pack.svg?branch=master)](https://travis-ci.org/Jllima/api_pack)
 [![Coverage Status](https://coveralls.io/repos/github/Jllima/api_pack/badge.svg?branch=master)](https://coveralls.io/github/Jllima/api_pack?branch=master)
 
