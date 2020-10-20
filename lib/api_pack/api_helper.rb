@@ -5,13 +5,13 @@ module ApiPack
     end
 
     def current_page
-      return params[:page].to_i if defined?(params[:page])
+      return params[:page].to_i if defined?(params[:page]) && !params[:page].nil?
 
       ApiPack::DEFAULT_PAGE
     end
 
     def per_page
-      return params[:per_page].to_i if defined?(params[:per_page])
+      return params[:per_page].to_i if defined?(params[:per_page]) && !params[:per_page].nil?
 
       ApiPack::DEFAULT_PER_PAGE
     end
