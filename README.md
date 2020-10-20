@@ -24,7 +24,7 @@ ruby >= 2.4
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'api_pack'
+gem 'api_pack', '~> 1.1.1' 
 ```
 
 And then execute:
