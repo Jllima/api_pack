@@ -3,9 +3,20 @@
 
 # ApiPack
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/api_pack`. To experiment with that code, run `bin/console` for an interactive prompt.
+ApiPack is a set of helpers to Api rails
 
-TODO: Delete this and the text above, and describe your gem
+**This project provides the following helpers**
+
+  - Json Web Token helpers
+  - Json Api especifications
+  - Errors Serializers
+  - Pagination links Serializers
+  - Serializer Adapter (BETA)
+
+## Compatibility
+```
+ruby >= 2.4
+```
 
 ## Installation
 
@@ -25,13 +36,164 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### JsonWebToken methods
+  
+- ApiPack::JsonWebToken.encode({ user_id: user.id }) \
+returns a valid token with an expiration time of one day
+- To change o expiration create an initializer api_pack and put this code
+```ruby
+ApiPack.exp = 12345
+```
 
-## Development
+Usage in a service authenticate user
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+ApiPack use gem JWT
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+class AuthenticateUser
+  def initialize(email, password)
+    @email = email
+    @password = password
+  end
+
+  def call
+    # return token valid
+    ApiPack::JsonWebToken.encode({ user_id: user.id }) if user
+  end
+  
+  private
+
+  attr_accessor :email, :password
+
+  def user
+    user = User.find_by(email: email)
+    return user if user&.authenticate(password)
+
+    # raise AuthenticationError if authenticate fail
+    raise(ApiPack::Errors::Auth::AuthenticationError, 'Invalid credentials')
+  end
+end
+```
+
+- ApiPack::JsonWebToken.decode(http_auth_header)
+
+Usage in a service authorize api request
+
+```ruby
+class AuthorizeApiRequest
+    def initialize(headers: {})
+      @headers = headers
+    end
+
+    def call
+      { user: user }
+    end
+
+    private
+
+    attr_accessor :headers
+
+    def user
+      @user ||= User.find(decoded_auth_token['user_id']) if decoded_auth_token
+    rescue ActiveRecord::RecordNotFound => e
+      # raise InvalidToken if user not found
+      raise ApiPack::Errors::Auth::InvalidToken, ("Invalid token #{e.message}")
+    end
+
+    def decoded_auth_token
+      # decode a token valid
+      @decoded_auth_token ||= ApiPack::JsonWebToken.decode(http_auth_header)
+    end
+
+    def http_auth_header
+      return headers['Authorization'].split(' ').last if headers['Authorization'].present?
+
+      raise(ApiPack::Errors::Auth::MissingToken, 'Missing token')
+    end
+  end
+```
+
+### Errors Serializers
+
+- Errors handled \
+ActiveRecord::RecordNotFound \
+ActionController::ParameterMissing \
+ActiveRecord::RecordInvalid
+
+- ApiPack::Errors::HandleError.new(e).call
+
+create an ExceptionHandler concern and deal with api errors in json api format
+
+```ruby
+module ExceptionHandler
+  extend ActiveSupport::Concern
+
+  included do
+    rescue_from StandardError do |e|
+      result = ApiPack::Errors::HandleError.new(e).call
+      render json: result[:body], status: result[:status]
+    end
+  end
+end
+```
+
+### Serializer Parser Adapter (BETA)
+
+This Parser aims to provide adapters for using serializers like FastJsonApi
+
+Default is FastJsonApi
+
+By convection the serializers should be in
+
+serializers/name_serializer/class_serializer
+
+Ex: serializers/fast_jsonapi/user_serializer.rb
+
+USAGE:
+ - Create initializer serilializer_parser.rb and put this code
+ 
+ 
+```ruby
+ApiPack::Serializer::Parser.adapter = :fast_json_api
+```
+
+ - include ApiPack::ApiHelper in aplication_controler.rb
+
+```ruby
+ class ApplicationController < ActionController::API
+  include ApiPack::ApiHelper
+end
+```
+  - use method serializer_hash to return an hash
+
+```ruby
+def index
+  users = User.all
+
+  render json: serializer_hash(users, :user)
+end
+```
+## Pagination Links
+- pagination_meta_generator \
+  Return an hash with pagination links
+-  Apipack has default per page like 10
+- To change o defaut_per_page create an initializer api_pack and put this code
+
+```ruby
+ApiPack.defaut_per_page = 12
+```
+
+```ruby
+def index
+  # current_page mtehod default is 1
+  # per_page method default is 10
+  users = User.page(current_page).per_page(per_page)
+
+  options = pagination_meta_generator(request, users.total_pages)
+
+  render json: serializer_hash(users, :user, opt: options)
+end
+```
 
 ## Contributing
 

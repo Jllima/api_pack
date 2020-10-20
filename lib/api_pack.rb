@@ -22,10 +22,16 @@ module ApiPack
   # 24 hours from now
   DEFAULT_EXP = (Time.now + 1 * 86_400).to_i
 
-  attr_writer :default_per_page, :exp
+  def default_per_page=(value)
+    @default_per_page = value
+  end
 
   def default_per_page
     @default_per_page ||= DEFAULT_PER_PAGE
+  end
+
+  def exp=(value)
+    @exp = value
   end
 
   def exp
