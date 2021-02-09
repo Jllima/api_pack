@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/api_pack.svg)](https://badge.fury.io/rb/api_pack)
-[![Build Status](https://travis-ci.org/Jllima/api_pack.svg?branch=master)](https://travis-ci.org/Jllima/api_pack)
+[![Build Status](https://www.travis-ci.com/Jllima/api_pack.svg?branch=master)](https://www.travis-ci.com/Jllima/api_pack)
 [![Coverage Status](https://coveralls.io/repos/github/Jllima/api_pack/badge.svg?branch=master)](https://coveralls.io/github/Jllima/api_pack?branch=master)
 
 # ApiPack
@@ -24,7 +24,7 @@ ruby >= 2.4
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'api_pack', '~> 1.1.1' 
+gem 'api_pack', '~> 1.1.2' 
 ```
 
 And then execute:
@@ -38,7 +38,12 @@ Or install it yourself as:
 ## Usage
 
 ### JsonWebToken methods
-  
+- First create file api_pack.rb in initializers in put this code
+```ruby
+Rails.application.config.to_prepare do
+  ApiPack.hmac_secret = 'your_secret_key'
+end
+```  
 - ApiPack::JsonWebToken.encode({ user_id: user.id }) \
 returns a valid token with an expiration time of one day
 - To change o expiration create an initializer api_pack and put this code
