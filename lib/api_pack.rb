@@ -10,7 +10,6 @@ require 'api_pack/errors/handle_error'
 require 'api_pack/errors/api_errors_serializer'
 require 'api_pack/errors/validation_error_serializer'
 require 'api_pack/errors/validation_errors_serializer'
-require 'api_pack/constants'
 require 'api_pack/support/helper'
 require 'api_pack/serializer/parser'
 
@@ -36,6 +35,14 @@ module ApiPack
 
   def exp
     @exp ||= DEFAULT_EXP
+  end
+
+  def hmac_secret=(value)
+    @hmac_secret = value
+  end
+
+  def hmac_secret
+    @hmac_secret
   end
 
   def serializer_adapter=(adapter)
