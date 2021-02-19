@@ -45,10 +45,10 @@ Rails.application.config.to_prepare do
 end
 ```  
 - ApiPack::JsonWebToken.encode({ user_id: user.id }) \
-returns a valid token with an expiration time of one day
-- To change o expiration create an initializer api_pack and put this code
+returns a valid token with an expiration time of one day by default
+- To change o expiration call method with parameter exp:
 ```ruby
-ApiPack.exp = 12345
+ApiPack::JsonWebToken.encode({ user_id: user.id, exp: 123 })
 ```
 
 Usage in a service authenticate user

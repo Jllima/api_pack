@@ -18,23 +18,13 @@ module ApiPack
 
   DEFAULT_PAGE = 1
   DEFAULT_PER_PAGE = 10
-  # 24 hours from now
-  DEFAULT_EXP = (Time.now + 1 * 86_400).to_i
-
+  
   def default_per_page=(value)
     @default_per_page = value
   end
 
   def default_per_page
     @default_per_page ||= DEFAULT_PER_PAGE
-  end
-
-  def exp=(value)
-    @exp = value
-  end
-
-  def exp
-    @exp ||= DEFAULT_EXP
   end
 
   def hmac_secret=(value)

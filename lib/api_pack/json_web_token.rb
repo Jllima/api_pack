@@ -1,6 +1,7 @@
 module ApiPack
   class JsonWebToken
-    def self.encode(payload, exp: ApiPack.exp)
+    # exp: 24 hours from now
+    def self.encode(payload, exp: (Time.now + 1 * 86_400).to_i)
       raise ApiPack::Errors::Auth::MissingHmacSecret if ApiPack.hmac_secret.nil?
 
       payload[:exp] = exp.to_i

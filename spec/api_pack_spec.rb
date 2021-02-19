@@ -5,22 +5,12 @@ RSpec.describe ApiPack do
     expect(ApiPack::VERSION).not_to be nil
   end
 
-  it 'has a ex default' do
-    expect(ApiPack.exp).to be_a Integer
-  end
-
   describe '.default_per_page=' do
     ApiPack.default_per_page = 12
 
     it { expect(ApiPack.default_per_page).to eq 12 }
   end
-
-  describe '.exp=' do
-    ApiPack.exp = 12345
-
-    it { expect(ApiPack.exp).to eq 12345 }
-  end
-
+  
   it 'Serializer adapater default is Fast Json Api' do
     expect(ApiPack.serializer_adapter=(:fast_json_api)).to eq :fast_json_api
   end
