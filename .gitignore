@@ -8,6 +8,7 @@
 /tmp/
 Gemfile.lock
 .DS_store
+api_pack-*
 
 # rspec failure tracking
 .rspec_status
