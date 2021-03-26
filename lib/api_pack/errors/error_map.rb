@@ -24,8 +24,8 @@ module ApiPack
         },
         'ApiPack::Errors::Auth::InvalidToken' => {
           method: :error_message_body,
-          title: 'Invalid Token',
-          status: :unprocessable_entity
+          title: 'Access Denied - Invalid Token',
+          status: :forbidden
         },
         'ApiPack::Errors::Auth::MissingToken' => {
           method: :error_message_body,

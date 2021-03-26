@@ -19,13 +19,13 @@ module ErrorHelper
       body: {
         errors: [
           {
-            title: 'Invalid Token',
-            status: :unprocessable_entity,
+            title: 'Access Denied - Invalid Token',
+            status: :forbidden,
             details: 'ApiPack::Errors::Auth::InvalidToken'
           }
         ]
       },
-      status: :unprocessable_entity
+      status: :forbidden
     }
   end
 
