@@ -24,7 +24,7 @@ ruby >= 2.4
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'api_pack', '~> 1.1.4' 
+gem 'api_pack', '~> 1.2.1' 
 ```
 
 And then execute:
@@ -182,7 +182,7 @@ end
 ## Pagination Links
 - pagination_meta_generator \
   Return an hash with pagination links
--  Apipack has default per page like 10
+-  Apipack has default per page like 5
 - To change o defaut_per_page create an initializer api_pack and put this code
 
 ```ruby
