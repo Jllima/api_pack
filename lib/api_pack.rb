@@ -17,7 +17,7 @@ module ApiPack
   module_function
 
   DEFAULT_PAGE = 1
-  DEFAULT_PER_PAGE = 10
+  DEFAULT_PER_PAGE = 5
   
   def default_per_page=(value)
     @default_per_page = value
