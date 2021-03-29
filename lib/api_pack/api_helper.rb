@@ -13,7 +13,7 @@ module ApiPack
     def per_page
       return params[:per_page].to_i if defined?(params[:per_page]) && !params[:per_page].nil?
 
-      ApiPack::DEFAULT_PER_PAGE
+      ApiPack.default_per_page
     end
 
     def serializer_hash(resource, class_name, opt: {})

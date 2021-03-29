@@ -5,15 +5,16 @@ RSpec.describe ApiPack do
     expect(ApiPack::VERSION).not_to be nil
   end
 
+  it 'Serializer adapater default is Fast Json Api' do
+    expect(ApiPack.serializer_adapter=(:fast_json_api)).to eq :fast_json_api
+  end
+  
   describe '.default_per_page=' do
     ApiPack.default_per_page = 12
 
     it { expect(ApiPack.default_per_page).to eq 12 }
   end
   
-  it 'Serializer adapater default is Fast Json Api' do
-    expect(ApiPack.serializer_adapter=(:fast_json_api)).to eq :fast_json_api
-  end
 
   describe '#pagination_meta_generator(request, total_pages)' do
     let(:mock_request) do
@@ -36,6 +37,6 @@ RSpec.describe ApiPack do
   end
 
   describe '#per_page' do
-    it { expect(controller.per_page).to be 10 }
+    it { expect(controller.per_page).to be 12 }
   end
 end
