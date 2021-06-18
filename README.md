@@ -24,7 +24,7 @@ ruby >= 2.4
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'api_pack', '~> 1.2.1' 
+gem 'api_pack', '~> 1.3.1' 
 ```
 
 And then execute:
@@ -143,42 +143,6 @@ module ExceptionHandler
 end
 ```
 
-### Serializer Parser Adapter (BETA)
-
-This Parser aims to provide adapters for using serializers like FastJsonApi
-
-Default is FastJsonApi
-
-By convection the serializers should be in
-
-serializers/name_serializer/class_serializer
-
-Ex: serializers/fast_jsonapi/user_serializer.rb
-
-USAGE:
- - Create initializer serilializer_parser.rb and put this code
- 
- 
-```ruby
-ApiPack::Serializer::Parser.adapter = :fast_json_api
-```
-
- - include ApiPack::ApiHelper in aplication_controler.rb
-
-```ruby
- class ApplicationController < ActionController::API
-  include ApiPack::ApiHelper
-end
-```
-  - use method serializer_hash to return an hash
-
-```ruby
-def index
-  users = User.all
-
-  render json: serializer_hash(users, :user)
-end
-```
 ## Pagination Links
 - pagination_meta_generator \
   Return an hash with pagination links
