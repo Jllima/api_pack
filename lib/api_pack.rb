@@ -1,5 +1,4 @@
 require 'jwt'
-require 'fast_jsonapi'
 require 'api_pack/version'
 require 'api_pack/api_helper'
 require 'api_pack/json_web_token'
@@ -11,6 +10,7 @@ require 'api_pack/errors/api_errors_serializer'
 require 'api_pack/errors/validation_error_serializer'
 require 'api_pack/errors/validation_errors_serializer'
 require 'api_pack/support/helper'
+require 'api_pack/support/undescore'
 require 'api_pack/serializer/parser'
 
 module ApiPack

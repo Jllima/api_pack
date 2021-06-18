@@ -4,7 +4,6 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gemspec
 
-gem 'fast_jsonapi'
 gem 'jwt'
 
 group :test do
